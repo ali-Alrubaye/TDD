@@ -18,24 +18,30 @@ namespace ValidationEngineTests
             
             Assert.IsTrue(sut.ValidateEmailAddress("mike@edument.se"));
             Assert.IsFalse(sut.ValidateEmailAddress("name@test"));
-            Assert.IsFalse(sut.ValidateEmailAddress("test.test@com"));
-            Assert.IsTrue(sut.ValidateEmailAddress("Name2015@test.com"));
             Assert.IsTrue(sut.ValidateEmailAddress("name@test2015.com"));
+           
         }
 
-        //[Test]
-        //public void IfMailHasADotBeforeReturnFalse()
-        //{
-        //    var sut = new Validator();
-        //    var r = sut.ValidateEmailAddress("test.test@com");
-        //    Assert.IsFalse(r);
-        //}
+        [Test]
+        public void MailHasADotBeforeReturnFalse()
+        {
+            var sut = new Validator();
+            var r = sut.ValidateEmailAddress("test.test@com");
+            Assert.IsFalse(r);
+        }
+        [Test]
+        public void MailHasNummberInNameReturnFalse()
+        {
+            var sut = new Validator();
+            var r = sut.ValidateEmailAddress("Name2015@test.com");
+            Assert.IsTrue(r);
+        }
         [Test]
         public void ThrowCustomException()
         {
             var sut = new Validator();
             //sut.ValidateEmailAddress("");
-            Assert.Throws<InvalidContentsException>(() => { sut.ValidateEmailAddress(""); });
+           Assert.Throws<InvalidContentsException>(() =>  sut.ValidateEmailAddress(""),"Exception not Throws");
             //Assert.Fail("Expected exception not thrown");
         }
     }
