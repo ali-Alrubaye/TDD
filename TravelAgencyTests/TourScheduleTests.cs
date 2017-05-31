@@ -45,7 +45,7 @@ namespace TravelAgencyTests
         {
             sut.CreateTour("New years day safari", new DateTime(2013, 1, 1, 10, 15, 0), 20);
             sut.CreateTour("February safari", new DateTime(2013, 2, 1, 10, 15, 0), 20);
-            sut.CreateTour("March safari", new DateTime(2013, 3, 1, 10, 15, 0), 20);
+            //sut.CreateTour("March safari", new DateTime(2013, 3, 1, 10, 15, 0), 20);
             //sut.CreateTour("April safari", new DateTime(2013, 4, 1, 10, 15, 0), 20);
 
             var result = sut.GetToursFor(new DateTime(2013, 1, 1));
@@ -58,8 +58,8 @@ namespace TravelAgencyTests
         public void TourAllocationException()
         {
             sut.CreateTour("New years day safari01", new DateTime(2013, 1, 1), 20);
-            sut.CreateTour("New years day safari02", new DateTime(2013, 2, 1), 20);
-            sut.CreateTour("New years day safari03", new DateTime(2013, 3, 1), 20);
+            sut.CreateTour("New years day safari02", new DateTime(2013, 1, 1), 20);
+            sut.CreateTour("New years day safari03", new DateTime(2013, 1, 1), 20);
             //sut.CreateTour("New years day safari04", new DateTime(2013, 1, 1, 10, 15, 0), 20);
 
             Assert.Throws<TourAllocationException>(() => sut.CreateTour("Fabruary safari", new DateTime(2013, 1, 1), 20));

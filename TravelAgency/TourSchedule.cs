@@ -14,14 +14,24 @@ namespace TravelAgency
          
         public void CreateTour(string name, DateTime dateTime, int seats)
         {
-            var checkDay = (from day in _scheduleByDay.Keys
-                where day.Day == dateTime.Day
-                select day).Count();
-            if (checkDay >= 3)
-                throw new TourAllocationException(dateTime.AddDays(1).Date);
-            if(_scheduleByDay.ContainsKey(dateTime))
-                _scheduleByDay[dateTime].Add(new Tour(name, dateTime, seats));
-            _scheduleByDay.Add(dateTime.Date,new List<Tour> {new Tour(name,dateTime,seats)});
+
+
+            if (_scheduleByDay.ContainsKey(dateTime))
+            {
+                var tours = _scheduleByDay[dateTime];
+
+
+                if (tours.Count >= 3)
+                {
+                        throw new TourAllocationException(dateTime.AddDays(1).Date);
+                }
+                tours.Add(new Tour(name, dateTime, seats));
+            }
+            else
+            {
+                 _scheduleByDay.Add(dateTime.Date,new List<Tour> {new Tour(name,dateTime,seats)});
+            }
+           
           
         }
 
