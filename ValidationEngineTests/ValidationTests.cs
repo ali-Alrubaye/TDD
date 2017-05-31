@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ValidationEngine;
 
 namespace ValidationEngineTests
@@ -19,7 +14,6 @@ namespace ValidationEngineTests
             Assert.IsTrue(sut.ValidateEmailAddress("mike@edument.se"));
             Assert.IsFalse(sut.ValidateEmailAddress("name@test"));
             Assert.IsTrue(sut.ValidateEmailAddress("name@test2015.com"));
-           
         }
 
         [Test]
