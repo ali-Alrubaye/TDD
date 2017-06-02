@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TravelAgency;
+using TravelAgencys;
 
-namespace TravelAgencyTests
+namespace TravelAgencysTests
 {
     [TestFixture]
     public class TourScheduleTests
@@ -20,7 +20,7 @@ namespace TravelAgencyTests
         [Test]
         public void CanCreateNewTour()
         {
-            //var sut = new TourSchedule();
+            var sut = new TourSchedule();
             sut.CreateTour("New years day safari", new DateTime(2013, 1, 1), 20);
 
             var result = sut.GetToursFor(new DateTime(2013, 1, 1));

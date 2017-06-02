@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TravelAgency
+namespace TravelAgencys
 {
-    public class TourSchedule
+    public interface ITourSchedule
+    {
+        void CreateTour(string name, DateTime dateTime, int seats);
+        List<Tour> GetToursFor(DateTime dateTime);
+    }
+
+    public class TourSchedule : ITourSchedule
     {
         private Dictionary<DateTime,List<Tour>>_scheduleByDay=
             new Dictionary<DateTime, List<Tour>>();
@@ -38,17 +42,5 @@ namespace TravelAgency
         }
        
     }
-    public class Tour
-    {
-        public string Name { get; private set; }
-        public DateTime Date { get; private set; }
-        public int Seats { get; private set; }
-
-        public Tour(string name, DateTime date, int seats)
-        {
-            this.Name = name;
-            this.Date = date;
-            this.Seats = seats;
-        }
-    }
+   
 }

@@ -39,6 +39,7 @@ namespace CalculatorTest
         [Test]
         [TestCase(3, "1,2")]
         [TestCase(6, "1,2,3")]
+        
         public void unknown_amount_of_numbers(int expected, string num)
         {
             var result = sut.AddNum(num);
@@ -62,12 +63,14 @@ namespace CalculatorTest
         }
 
         [Test]
-        public void negative_number_Exception()
+        [TestCase("1,-2,3")]
+        [TestCase("-3")]
+        public void negative_number_Exception(string num)
         {
             //var result = sut.AddNum("-2");
             Assert.Throws<ArgumentException>(() =>
             {
-                sut.AddNum("-2");
+                sut.AddNum(num);
             });
         }
     }
